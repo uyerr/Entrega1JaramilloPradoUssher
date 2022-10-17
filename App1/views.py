@@ -9,12 +9,12 @@ from App1.models import User, Inicar
 from App1.forms import UserForm, FindUserFormulario
 
 def index(request):
-    template = loader.get_template('index.html')
+    template = loader.get_template('Pagina_Blog/index.html')
     template_renderizado = template.render()
     return HttpResponse(template_renderizado)
 
 def about(request):
-    template = loader.get_template('about.html')
+    template = loader.get_template('Pagina_Blog/about.html')
     template_renderizado = template.render()
         
     return HttpResponse(template_renderizado)
@@ -47,7 +47,7 @@ def register(request):
     
     formulario = UserForm()
     
-    return render(request, 'register.html', {'formulario': formulario})
+    return render(request, 'Pagina_Blog/register.html', {'formulario': formulario})
 #def crear_usuario(request):
     #Crear(nombre = , apellido= ,email = ,passsword = ,)
     
