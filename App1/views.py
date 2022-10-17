@@ -19,13 +19,6 @@ def about(request):
         
     return HttpResponse(template_renderizado)
 
-
-# def register(request):
-#     template = loader.get_template('register.html')
-#     template_renderizado = template.render()
-        
-#     return HttpResponse(template_renderizado)
-
 def register(request):
     
     if request.method == 'POST':
@@ -48,12 +41,19 @@ def register(request):
     formulario = UserForm()
     
     return render(request, 'Pagina_Blog/register.html', {'formulario': formulario})
-#def crear_usuario(request):
-    #Crear(nombre = , apellido= ,email = ,passsword = ,)
+
+def user_list(request):
     
+    nombre = request.GET.get('nombre')
     
+    if nombre:
+        usuarios = User.objects.filter(nombre__icontains=nombre)
+    else:
+        usuarios = User.objects.all()
+        
+    formulario = FindUserFormulario()
     
-    #return HttpResponse(' ')
+    return render(request, 'Pagina_Blog/user_list.html', {'usuarios': usuarios, 'formulario': formulario})
 
 def iniciar_sesion(request):
     emails = Inicar.objects.all()
