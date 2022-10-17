@@ -6,7 +6,7 @@ from django.shortcuts import render
 
 from App1.models import Crear, Inicar
 
-def home(request):
+def index(request):
     template = loader.get_template('index.html')
     template_renderizado = template.render()
     return HttpResponse(template_renderizado)

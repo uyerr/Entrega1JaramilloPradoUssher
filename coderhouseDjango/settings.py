@@ -55,7 +55,7 @@ ROOT_URLCONF = 'coderhouseDjango.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'template/Pagina_Blog'],
+        'DIRS': [r'C:\Users\Santiago\Desktop\Entrega1\Entrega1JaramilloPradoUssher\App1\template\Pagina_Blog'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
