@@ -8,7 +8,7 @@
 {% block mi_contenido %}
 <form action={% url 'register' %} method="POST">
     {% csrf_token %}
-    <table>
+    <table width="15px">
         {{formulario}}
     </table>
     <input type="submit" value="Register" class="input--submit">
