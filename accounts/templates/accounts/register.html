@@ -5,12 +5,12 @@
 {% endblock title_pagina %}
 
 
-{% block mi_contenido %}
+{% block  mi_contenido%}
 <form action={% url 'register' %} method="POST">
     {% csrf_token %}
-    <table width="15px">
+    <table>
         {{formulario}}
     </table>
-    <input type="submit" value="Register" class="input--submit">
+    <button>Register</button>
 </form>
-{% endblock mi_contenido %}
+{% endblock mi_contenido%}
