@@ -43,6 +43,11 @@
         <li>Apellido: {{user.last_name.capitalize}}</li>
         <li>Email: {{user.email}}</li>
         <li>Descripcion: <br> {{request.user.extensionusuario.description}}</li>
+        {% if request.user.extensionusuario.website %}
+            <li>Sitio Web: <a href={{request.user.extensionusuario.website}} target="_blank">{{request.user.extensionusuario.website}}</a></li>
+        {% else %}
+            <li>Sitio web: </li>
+        {% endif %}
     </ul>
     <a href={% url 'edit_profile' %}>Editar perfil</a><br>
     <a href={% url 'password' %}>Cambiar contraseña</a><br>

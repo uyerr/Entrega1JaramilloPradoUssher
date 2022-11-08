@@ -21,4 +21,5 @@ class ProfileEditForm(forms.Form):
     last_name = forms.CharField(label='Apellido')
     email = forms.CharField()
     description = forms.CharField(label='descripcion', required=False)
+    website = forms.URLField(label='website', required=False)
     avatar = forms.ImageField(required=False)

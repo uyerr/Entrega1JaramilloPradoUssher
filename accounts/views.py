@@ -58,6 +58,7 @@ def edit_profile(request):
            user.last_name = data['last_name']
            user.email = data['email']
            user.extensionusuario.description = data['description']
+           user.extensionusuario.website = data['website']
            user.extensionusuario.avatar = data['avatar']
            
            user.save()
@@ -71,6 +72,7 @@ def edit_profile(request):
                 'last_name': user.last_name,
                 'email': user.email,
                 'description': user.extensionusuario.description,
+                'website': user.extensionusuario.website,
                 'avatar': user.extensionusuario.avatar,
             }
         )
