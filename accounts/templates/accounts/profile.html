@@ -42,6 +42,7 @@
         <li>Nombre: {{user.first_name.capitalize}}</li>
         <li>Apellido: {{user.last_name.capitalize}}</li>
         <li>Email: {{user.email}}</li>
+        <li>Descripcion: <br> {{request.user.extensionusuario.description}}</li>
     </ul>
     <a href={% url 'edit_profile' %}>Editar perfil</a><br>
     <a href={% url 'password' %}>Cambiar contraseña</a><br>
