@@ -9,15 +9,12 @@ from App1.models import User, Inicar
 from App1.forms import FindUserFormulario
 
 def index(request):
-    template = loader.get_template('Pagina_Blog/index.html')
-    template_renderizado = template.render()
-    return HttpResponse(template_renderizado)
+    
+    return render(request, 'Pagina_Blog/index.html')
 
 def about(request):
-    template = loader.get_template('Pagina_Blog/about.html')
-    template_renderizado = template.render()
-        
-    return HttpResponse(template_renderizado)
+    
+    return render(request, 'Pagina_Blog/about.html')
 
 def user_list(request):
     
