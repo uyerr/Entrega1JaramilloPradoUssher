@@ -23,3 +23,6 @@ class ProfileEditForm(forms.Form):
     description = forms.CharField(label='descripcion', required=False)
     website = forms.URLField(label='website', required=False)
     avatar = forms.ImageField(required=False)
+    
+class UserFindForm(forms.Form):
+    username = forms.CharField(max_length=30, required=False, label='')
