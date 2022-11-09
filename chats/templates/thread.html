@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thread</title>
+    <link rel="stylesheet" href={% static 'css/styles.css' %}>
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href={% url 'index' %}>Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href={% url 'profile' %}>{{request.user.username.capitalize}}</a></li> <!--Agregar al "Href" dirrecion al perfil del usuario-->
+                        <li class="nav-item"><a class="nav-link" href={% url 'logout' %}>Cerrar Sesion</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href={% url 'login' %}>Iniciar Sesion</a></li>
+                        <li class="nav-item"><a class="nav-link" href={% url 'register' %}>Register</a></li>
+                    {% endif %}
+                    <li class="nav-item"><a class="nav-link" href={% url 'users' %}>Users</a></li>
+                    <li class="nav-item"><a class="nav-link" href={% url 'about' %}>About</a></li>
+                    <li class="nav-item"><a class="nav-link" href={% url 'inbox' %}>Inbox</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="card col-md-12 mt-5 p-3 shadow-sm">
+                {% if thread.receiver == request.user %}
+                    <h5>@{{thread.user}}</h5>
+                {% else %}
+                    <h5>@{{thread.receiver}}</h5>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if message_list.all.count == 0 %}
+        <div class="row my-5">
+            <div class="col-md-12">
+                <p class="empty-text">No Messages</p>
+            </div>
+        </div>
+        {% endif %}
+
+        {% for message in message_list %}
+        <div class="row">
+            <div class="col-md-12 my-1">
+                {% if message.sender_user == request.user %}
+                    <div class="sent-message">
+                        <p>{{message.sender_user}}</p>
+                        <p>{{message.body}}</p>
+                    </div>
+                {% elif message.receiver_user == request.user %}
+                    <div class="received-message">
+                        <p>{{message.sender_user}}</p>
+                        <p>{{message.body}}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+        
+        <div class="message-submit col-md-12 p-3 shadow-sm">
+            <form action={% url 'create_message' thread.pk %} enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+                {{form}}
+                <div class="d-grid gap-2 mt-3">
+                    <button class="btn btn-light" type="submit">Enviar Mensaje</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -369,6 +369,7 @@ select:disabled {
   opacity: 1;
 }
 
+
 [list]::-webkit-calendar-picker-indicator {
   display: none;
 }
@@ -3211,23 +3212,23 @@ textarea.form-control-lg {
 
 .btn-light {
   color: #000;
-  background-color: #f8f9fa;
+  background-color: #199c9c;
   border-color: #f8f9fa;
 }
 .btn-light:hover {
   color: #000;
-  background-color: #f9fafb;
+  background-color: #3a3b3b;
   border-color: #f9fafb;
 }
 .btn-check:focus + .btn-light, .btn-light:focus {
   color: #000;
-  background-color: #f9fafb;
+  background-color: #3a3b3b;
   border-color: #f9fafb;
   box-shadow: 0 0 0 0.25rem rgba(211, 212, 213, 0.5);
 }
 .btn-check:checked + .btn-light, .btn-check:active + .btn-light, .btn-light:active, .btn-light.active, .show > .btn-light.dropdown-toggle {
   color: #000;
-  background-color: #f9fafb;
+  background-color: #3a3b3b;
   border-color: #f9fafb;
 }
 .btn-check:checked + .btn-light:focus, .btn-check:active + .btn-light:focus, .btn-light:active:focus, .btn-light.active:focus, .show > .btn-light.dropdown-toggle:focus {
@@ -3235,7 +3236,7 @@ textarea.form-control-lg {
 }
 .btn-light:disabled, .btn-light.disabled {
   color: #000;
-  background-color: #f8f9fa;
+  background-color: #3a3b3b;
   border-color: #f8f9fa;
 }
 
