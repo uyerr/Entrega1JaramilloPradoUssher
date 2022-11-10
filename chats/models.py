@@ -9,6 +9,8 @@ class ThreadModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
     receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
     
+    def __str__(self):
+        return f'{self.user} {self.receiver}'
 
 class MessageModel(models.Model):
     
@@ -20,3 +22,5 @@ class MessageModel(models.Model):
     date = models.DateTimeField(default=timezone.now)
     is_read = models.BooleanField(default=False)
     
+    def __str__(self):
+        return f'{self.body[0:11]}'

@@ -10,3 +10,6 @@ class ExtensionUsuario(models.Model):
     description = models.CharField(max_length=200, null=True)
     website = models.URLField(max_length=100, null=True)
     avatar = models.ImageField(upload_to='avatar' ,null=True, blank=True)
+    
+    def __str__(self):
+        return f'{self.user}'
