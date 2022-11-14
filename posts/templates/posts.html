@@ -1,0 +1,28 @@
+{% extends 'Pagina_Blog/base.html' %} 
+
+{% block  mi_contenido%}
+<!-- Page content-->
+<div class="container">
+    <div class="row"> <a href="{% url 'post_create' %}" class="btn btn-secondary">Nuevo Post</a> </div>
+    <div class="row">                <!-- Blog entries-->
+         <!-- Blog Entries Column -->
+    <div class="col-md-8 mt-3 left">
+        {% for post in post_list %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">{{ post.title }}</h2>
+                <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
+                <p class="card-text">{{post.content|slice:":200" }}</p>
+                <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Leer más &rarr;</a>
+                <a href="{% url 'post_edit' post.id %}" class="btn btn-primary">Editar</a>
+                <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">Eliminar</a>
+                </li>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    </div>
+</div>
+
+{% endblock mi_contenido%}

@@ -1,0 +1,20 @@
+{% extends 'Pagina_Blog/base.html' %} 
+
+
+{% block title_pagina %}
+<title>Crear Post</title>
+{% endblock title_pagina %}
+
+{% block mi_contenido %}
+<form action={% url 'post_create' %} method="POST">
+    {% csrf_token %}
+    
+    <table>
+        <div class="form-group">
+            {{form.media}}
+            {{form}}
+        </div>        
+    </table>
+    <button>Crear</button>
+</form>
+{% endblock mi_contenido %}
