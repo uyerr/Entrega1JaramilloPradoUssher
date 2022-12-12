@@ -11288,3 +11288,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
+.profilepic {
+  width: 100px;
+}

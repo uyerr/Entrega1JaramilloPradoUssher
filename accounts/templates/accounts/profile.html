@@ -1,40 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'Pagina_Blog/base.html' %}
+
+{% block title_pagina %}
     <title>Profile</title>
-    <link rel="stylesheet" href={% static 'styles.css' %}>
+{% endblock title_pagina %} 
 
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href={% url 'index' %}>Home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    {% if request.user.is_authenticated %}
-                        <li class="nav-item"><a class="nav-link" href={% url 'profile' %}>{{request.user.username.capitalize}}</a></li> <!--Agregar al "Href" dirrecion al perfil del usuario-->
-                        <li class="nav-item"><a class="nav-link" href={% url 'logout' %}>Cerrar Sesion</a></li>
-                    {% else %}
-                        <li class="nav-item"><a class="nav-link" href={% url 'login' %}>Iniciar Sesion</a></li>
-                        <li class="nav-item"><a class="nav-link" href={% url 'register' %}>Register</a></li>
-                    {% endif %}
-                    <li class="nav-item"><a class="nav-link" href={% url 'about' %}>About</a></li>  
-                    <li class="nav-item"><a class="nav-link" href={% url 'post' %}>Posts</a></li>
-                    <li class="nav-item"><a class="nav-link" href={% url 'inbox' %}>Inbox</a></li>              
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+{% block mi_contenido %}
     <h1>Perfil de {{user.username.capitalize}}</h1>
     <div>
         {% if  request.user.extensionusuario.avatar %}
-        <img src={{request.user.extensionusuario.avatar.url}}>
+        <img class="profilepic" src={{request.user.extensionusuario.avatar.url}}>
         {% else %}
         <p>Sin foto de perfil</p>
         {% endif %}
@@ -52,6 +26,4 @@
     </ul>
     <a href={% url 'edit_profile' %}>Editar perfil</a><br>
     <a href={% url 'password' %}>Cambiar contraseña</a><br>
-
-</body>
-</html>
+{% endblock mi_contenido %}

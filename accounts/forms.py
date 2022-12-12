@@ -17,12 +17,12 @@ class UserCreate(UserCreationForm):
         
 class ProfileEditForm(forms.Form):
     
-    first_name = forms.CharField(label='Nombre')
-    last_name = forms.CharField(label='Apellido')
-    email = forms.CharField()
+    first_name = forms.CharField(label='Nombre', required=False)
+    last_name = forms.CharField(label='Apellido', required=False)
+    email = forms.CharField(required=False)
     description = forms.CharField(label='descripcion', required=False)
     website = forms.URLField(label='website', required=False)
-    avatar = forms.ImageField(required=False)
+    avatar = forms.ImageField(required=False, )
     
 class UserFindForm(forms.Form):
     username = forms.CharField(max_length=30, required=False, label='')
